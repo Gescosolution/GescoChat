@@ -1,9 +1,28 @@
 {
-  "name": "socket-chat-example",
-  "version": "0.0.1",
-  "description": "my first socket.io app",
+  "name": "GescoChat",
+  "version": "1.0.0",
+  "description": "Chat interno de Gesco",
+  "main": "chatServer.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gescosolution/GescoChat"
+  },
+  "author": "Fernando Llodra Belda",
+  "license": "ISC",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "https://github.com/Gescosolution/GescoChatO",
   "dependencies": {
-    "express": "^4.10.2",
-    "socket.io": "^1.3.7"
+    "mocha": "^2.1.0",
+    "should": "^4.6.0",
+    "socket.io": "^1.2.1",
+    "socket.io-client": "^1.2.1"
   }
 }
