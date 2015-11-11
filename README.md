@@ -1,4 +1,7 @@
 # GescoChat
+
+[![Build Status](https://travis-ci.org/Gescosolution/GescoChat.svg?branch=master)](https://travis-ci.org/Gescosolution/GescoChat)
+
 **Chat interno de GecoSolutions //GescoSolutions's internal chat**
 
 Módulo para la comunicación interna mediante mensajería instantánea de los miembros del proyecto.
