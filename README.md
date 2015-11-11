@@ -11,7 +11,9 @@ Este proyecto participa en el Certamen de Proyectos Libres de la Universidad de 
 
 Desarrollado por Fernando Llodra Belda ([@fllodrab](https://github.com/fllodrab)).
 
-## Descripción
+## Primer Hito
+
+### Descripción
 GescoChat es un chat interno orientado a comunicaciones entre miembros de un proyecto informáticos para la gestión de éste. Este chat tiene diferentes herramientas útiles para una buena comunicación durante el desarrollo de cualquier proyecto informático.
 
 A su vez, GescoChat es un módulo que forma parte de Gesco (Gestor de Proyectos Informáticos) de la organización GescoSolutions.
@@ -23,10 +25,10 @@ Los hitos establecidos son los siguientes:
 * **Despliegue**: Etapa de despliegue.
 * **Configuración**: Etapa de gestión de configuraciones.
 
-## Motivación
+### Motivación
 Lo mas importante en un equipo es la comunicación. Por eso surge la necesidad en todo proyecto (trabajo en equipo) de disponer de herramientas que fomenten esta comunicación. De esta idea surge GescoChat, una herramienta de mensajería instantanea donde poder compartir todo tipo de ideas y datos sobre el proyecto, y que dispone de multiples herramientas implícitas útiles para compartir información entre los miembros del equipo.
 
-## Herramientas de desarrollo
+### Herramientas de desarrollo
 A continuación, se describe las diferentes herramientas que se usan para el desarrollo de este proyecto.
 
 Esta aplicación se desarrollará en [Node.js](https://nodejs.org/en/), un entorno en tiempo de ejecución multiplataforma, de código abierto, para la capa del servidor (pero no limitándose a ello) basado en el lenguaje de programación ECMAScript, asíncrono, con I/O de datos en una arquitectura orientada a eventos y basado en el motor V8 de Google. Además, se usa [Socket.io](http://socket.io/), el cual habilita eventos basados en comunicaciones bidireccionales en tiempo real, imprescindible para la causa.
@@ -40,3 +42,25 @@ Se pretende seguir una metodología de desarrollo DevOps por lo que es important
 Se elabora un provisionamiento de software automático con [Ansible](http://www.ansible.com/).
 
 Se prepara la aplicación para poder desplegarse sin problemas en un PaaS/IaaS como [Azure](https://azure.microsoft.com/es-es/).
+
+## Segundo Hito: Integración continua
+
+### Tareas
+
+Se utiliza [Grunt](http://gruntjs.com/) para automatizar las tareas tales como la documentación y los test de prueba.
+
+He elegido esta herramienta por ser una de las más populares y por tanto con una amplia documentación y catálogo de
+plugins. 
+
+### Tests
+
+Para los test, he usado [Mocha](https://mochajs.org/) ya que se trata de una framework de pruebas para JavaScript y por 
+tanto compatible con **Node.js**, que es el lenguaje utilizado para mi proyecto.
+
+### Integración Continua
+
+Se utiliza [Travis CI](https://travis-ci.org/) para la construcción y pruebas de la aplicación. Se ha elegido esta 
+herramienta frente a otras por su gran integración con gitHub, su facilidad de uso y la posibilidad de ejecutar una 
+aplicación en diferentes versiones simultáneamente.
+
+

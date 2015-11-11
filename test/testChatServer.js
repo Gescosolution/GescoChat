@@ -16,7 +16,7 @@ var chatUser3 = {'name': 'Dana'};
 
 describe("Chat Server", function () {
 
-    /* Test 1 - A Single User */
+    // Test 1 - A Single User - Un usuario conectado
     it('Should broadcast new user once they connect', function (done) {
         var client = io.connect(socketURL, options);
 
@@ -68,7 +68,7 @@ describe("Chat Server", function () {
         });
     });*/
 
-    /* Test 3 - User sends a message to chat room. */
+    // Test 3 - User sends a message to chat room. - Un usuario mandaun mensaje a una sala de chat
     it('Should be able to broadcast messages', function (done) {
         var client1, client2, client3;
         var message = 'Hello World';
@@ -104,7 +104,7 @@ describe("Chat Server", function () {
         });
     });
 
-    /* Test 4 - User sends a private message to another user. */
+    // Test 4 - User sends a private message to another user. - Un usuario manda un mensaje privado a otro
     it('Should be able to send private messages', function (done) {
         var client1, client2, client3;
         var message = {to: chatUser1.name, txt: 'Private Hello World'};
