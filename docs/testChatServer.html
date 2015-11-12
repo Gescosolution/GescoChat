@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>testChatServer.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="Gruntfile.html">
+                  Gruntfile.js
+                </a>
+              
+                
+                <a class="source" href="chatServer.html">
+                  chatServer.js
+                </a>
+              
+                
+                <a class="source" href="index.html">
+                  index.js
+                </a>
+              
+                
+                <a class="source" href="testChatServer.html">
+                  testChatServer.js
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>testChatServer.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> should = <span class="hljs-built_in">require</span>(<span class="hljs-string">'should'</span>);
+<span class="hljs-keyword">var</span> io = <span class="hljs-built_in">require</span>(<span class="hljs-string">'socket.io-client'</span>),
+    server = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../chatServer'</span>);
+
+
+<span class="hljs-keyword">var</span> socketURL = <span class="hljs-string">'http://127.0.0.1:3000'</span>;
+
+<span class="hljs-keyword">var</span> options = {
+    transports: [<span class="hljs-string">'websocket'</span>],
+    <span class="hljs-string">'force new connection'</span>: <span class="hljs-literal">true</span>
+};
+
+<span class="hljs-keyword">var</span> chatUser1 = {<span class="hljs-string">'name'</span>: <span class="hljs-string">'Tom'</span>};
+<span class="hljs-keyword">var</span> chatUser2 = {<span class="hljs-string">'name'</span>: <span class="hljs-string">'Sally'</span>};
+<span class="hljs-keyword">var</span> chatUser3 = {<span class="hljs-string">'name'</span>: <span class="hljs-string">'Dana'</span>};
+
+describe(<span class="hljs-string">"Chat Server"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Test 1 - A Single User - Un usuario conectado</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    it(<span class="hljs-string">'Should broadcast new user once they connect'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">done</span>) </span>{
+        <span class="hljs-keyword">var</span> client = io.connect(socketURL, options);
+
+        client.on(<span class="hljs-string">'connect'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>{
+            client.emit(<span class="hljs-string">'connection name'</span>, chatUser1);
+        });
+
+        client.on(<span class="hljs-string">'new user'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">usersName</span>) </span>{
+            usersName.should.be.type(<span class="hljs-string">'string'</span>);
+            usersName.should.equal(chatUser1.name + <span class="hljs-string">" has joined."</span>);
+            <span class="hljs-comment">/* If this client doesn't disconnect it will interfere
+             with the next test */</span>
+            client.disconnect();
+            done();
+        });
+    });
+
+    <span class="hljs-comment">/*/!* Test 2 - Two Users *!/
+    it('Should broadcast new user to all users', function (done) {
+        var client1 = io.connect(socketURL, options);
+
+        client1.on('connect', function (data) {
+            client1.emit('connection name', chatUser1);
+
+            /!* Since first client is connected, we connect
+             the second client. *!/
+            var client2 = io.connect(socketURL, options);
+
+            client2.on('connect', function (data) {
+                client2.emit('connection name', chatUser2);
+            });
+
+            client2.on('new user', function (usersName) {
+                usersName.should.equal(chatUser2.name + " has joined.");
+                client2.disconnect();
+            });
+
+        });
+
+        var numUsers = 0;
+        client1.on('new user', function (usersName) {
+            numUsers += 1;
+
+            if (numUsers === 2) {
+                usersName.should.equal(chatUser2.name + " has joined.");
+                client1.disconnect();
+                done();
+            }
+        });
+    });*/</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Test 3 - User sends a message to chat room. - Un usuario mandaun mensaje a una sala de chat</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    it(<span class="hljs-string">'Should be able to broadcast messages'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">done</span>) </span>{
+        <span class="hljs-keyword">var</span> client1, client2, client3;
+        <span class="hljs-keyword">var</span> message = <span class="hljs-string">'Hello World'</span>;
+        <span class="hljs-keyword">var</span> messages = <span class="hljs-number">0</span>;
+
+        <span class="hljs-keyword">var</span> checkMessage = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">client</span>) </span>{
+            client.on(<span class="hljs-string">'message'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">msg</span>) </span>{
+                message.should.equal(msg);
+                client.disconnect();
+                messages++;
+                <span class="hljs-keyword">if</span> (messages === <span class="hljs-number">3</span>) {
+                    done();
+                }
+                ;
+            });
+        };
+
+        client1 = io.connect(socketURL, options);
+        checkMessage(client1);
+
+        client1.on(<span class="hljs-string">'connect'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>{
+            client2 = io.connect(socketURL, options);
+            checkMessage(client2);
+
+            client2.on(<span class="hljs-string">'connect'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>{
+                client3 = io.connect(socketURL, options);
+                checkMessage(client3);
+
+                client3.on(<span class="hljs-string">'connect'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>{
+                    client2.send(message);
+                });
+            });
+        });
+    });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Test 4 - User sends a private message to another user. - Un usuario manda un mensaje privado a otro</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    it(<span class="hljs-string">'Should be able to send private messages'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">done</span>) </span>{
+        <span class="hljs-keyword">var</span> client1, client2, client3;
+        <span class="hljs-keyword">var</span> message = {to: chatUser1.name, txt: <span class="hljs-string">'Private Hello World'</span>};
+        <span class="hljs-keyword">var</span> messages = <span class="hljs-number">0</span>;
+
+        <span class="hljs-keyword">var</span> completeTest = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+            messages.should.equal(<span class="hljs-number">1</span>);
+            client1.disconnect();
+            client2.disconnect();
+            client3.disconnect();
+            done();
+        };
+
+        <span class="hljs-keyword">var</span> checkPrivateMessage = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">client</span>) </span>{
+            client.on(<span class="hljs-string">'private message'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">msg</span>) </span>{
+                message.txt.should.equal(msg.txt);
+                msg.from.should.equal(chatUser3.name);
+                messages++;
+                <span class="hljs-keyword">if</span> (client === client1) {
+                    <span class="hljs-comment">/* The first client has received the message
+                     we give some time to ensure that the others
+                     will not receive the same message. */</span>
+                    setTimeout(completeTest, <span class="hljs-number">40</span>);
+                }
+                ;
+            });
+        };
+
+        client1 = io.connect(socketURL, options);
+        checkPrivateMessage(client1);
+
+        client1.on(<span class="hljs-string">'connect'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>{
+            client1.emit(<span class="hljs-string">'connection name'</span>, chatUser1);
+            client2 = io.connect(socketURL, options);
+            checkPrivateMessage(client2);
+
+            client2.on(<span class="hljs-string">'connect'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>{
+                client2.emit(<span class="hljs-string">'connection name'</span>, chatUser2);
+                client3 = io.connect(socketURL, options);
+                checkPrivateMessage(client3);
+
+                client3.on(<span class="hljs-string">'connect'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>{
+                    client3.emit(<span class="hljs-string">'connection name'</span>, chatUser3);
+                    client3.emit(<span class="hljs-string">'private message'</span>, message)
+                });
+            });
+        });
+    });
+});</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
