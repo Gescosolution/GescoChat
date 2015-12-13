@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/Gescosolution/GescoChat.svg?branch=master)](https://travis-ci.org/Gescosolution/GescoChat)
 
-**Chat interno de GecoSolutions //GescoSolutions's internal chat**
+**Chat interno de GescoSolutions //GescoSolutions's internal chat**
 
 Módulo para la comunicación interna mediante mensajería instantánea de los miembros del proyecto.
 Publicado bajo licencia **GNU GENERAL PUBLIC LICENSE Version 2**.
@@ -62,5 +62,7 @@ tanto compatible con **Node.js**, que es el lenguaje utilizado para mi proyecto.
 Se utiliza [Travis CI](https://travis-ci.org/) para la construcción y pruebas de la aplicación. Se ha elegido esta 
 herramienta frente a otras por su gran integración con gitHub, su facilidad de uso y la posibilidad de ejecutar una 
 aplicación en diferentes versiones simultáneamente.
+
+### 
 
 
