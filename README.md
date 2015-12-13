@@ -63,6 +63,69 @@ Se utiliza [Travis CI](https://travis-ci.org/) para la construcción y pruebas d
 herramienta frente a otras por su gran integración con gitHub, su facilidad de uso y la posibilidad de ejecutar una 
 aplicación en diferentes versiones simultáneamente.
 
-### 
+### Despliegue en un PaaS
+
+Se va a hacer el despliegue de la aplicación en OpenShift debido a las siguientes razones:
+
+(DAR RAZONES)
+
+Para configurar correctamente el despliegue en OpenShift se deben seguir los siguientes pasos:
+
+- Instalar herramienta de línea de comandos de **Travis CI** como gema **Ruby**.
+
+`sudo gem install travis -v 1.8.0 --no-rdoc --no-ri`
+
+- Instalar la gema con la herramienta de línea de comandos de **OpenShift**.
+
+`sudo gem install rhc`
+
+- Configurar las herramientas **OpenShift** (Sólo si es la primera vez que se instala ésta gema).
+
+`rhc setup`
+
+- Crear una aplicación **OpenShift** donde desplegar nuestra app.
+
+`rhc app create gescochat nodejs-0.10`
+
+- Editar el archivo de configuración de Travis CI para agregar la información que se necesita a la hora del despliegue
+automático.
+
+`travis setup openshift`
+
+(Aquí me da fallo)
+An error occurred running `travis setup`:
+    Addressable::URI::InvalidURIError: Invalid scheme format: git@github.com
+
+Issue sin resolver: https://github.com/travis-ci/travis-ci/issues/5280
+
+Pasamos a Heroku.
+
+### Heroku
+
+Voy a usar **Heroku** para el despliegue por su facilidad para desplegar cualquier aplicación.
+En un principio, se quiso optar por OpenShift por probar un nuevo PaaS, pero dió fallos a la hora de configurarlo como
+se ha visto previamente.
+
+Para desplegar una aplicación en Heroku hay que seguir los siguientes pasos:
+
+- Como con OpenShift, se necesita tener instalado Ruby con al menos la versión 1.9.3.
+
+`sudo apt-get install ruby-full`
+
+- Instalar herramienta de línea de comandos de **Travis CI** como gema **Ruby**.
+
+`sudo gem install travis`
+
+- Hacer push de la aplicación a **Heroku**.
+
+`git push heroku master`
+
+- Habilitar la 'Espera de integración continua antes de desplegar'.
+
+![esperaCI](https://dl.dropboxusercontent.com/s/2ka1raisqbqfwij/Captura%20de%20pantalla%202015-12-13%2021.37.40.png)
+
+
+
+
 
 
