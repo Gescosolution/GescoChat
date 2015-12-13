@@ -65,9 +65,7 @@ aplicación en diferentes versiones simultáneamente.
 
 ### Despliegue en un PaaS
 
-Se va a hacer el despliegue de la aplicación en OpenShift debido a las siguientes razones:
-
-(DAR RAZONES)
+Se pretende hacer el despliegue en OpenShift por la oferta de add-ons sin tener límite y de forma gratuita.
 
 Para configurar correctamente el despliegue en OpenShift se deben seguir los siguientes pasos:
 
@@ -103,7 +101,7 @@ Pasamos a Heroku.
 ### Heroku
 
 Voy a usar **Heroku** para el despliegue por su facilidad para desplegar cualquier aplicación.
-En un principio, se quiso optar por OpenShift por probar un nuevo PaaS, pero dió fallos a la hora de configurarlo como
+En un principio, se quiso optar por OpenShift por probar un nuevo PaaS, pero dio fallos a la hora de configurarlo como
 se ha visto previamente.
 
 Para desplegar una aplicación en Heroku hay que seguir los siguientes pasos:
@@ -123,6 +121,20 @@ Para desplegar una aplicación en Heroku hay que seguir los siguientes pasos:
 - Habilitar la 'Espera de integración continua antes de desplegar'.
 
 ![esperaCI](https://dl.dropboxusercontent.com/s/2ka1raisqbqfwij/Captura%20de%20pantalla%202015-12-13%2021.37.40.png)
+
+Una vez hechos estos pasos, cada vez que hagamos push desde la rama 'master' se hará una integración continua con 
+**Travis CI**, y hasta que no acabe exitosamente dicha integración continua, no se desplegará en **Heroku**. 
+
+A continuación, se puede observar como con un simple push a 'master' **Travis CI** ha ejecutado la integración continua
+y mas tarde **Heroku** la ha desplegado.
+
+**Travis CI**
+![travisCI](https://dl.dropboxusercontent.com/s/cfpbxv4tnbq4l2a/Captura%20de%20pantalla%202015-12-13%2021.58.21.png)
+
+**Heroku**
+![Heroku](https://dl.dropboxusercontent.com/s/od8je4zz7l28upv/Captura%20de%20pantalla%202015-12-13%2021.58.30.png)
+
+
 
 
 
