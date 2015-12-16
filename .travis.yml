@@ -5,3 +5,11 @@ language: node_js
 node_js:
   - "0.11.16"
   - "5.0.0"
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: oRKKcli76XR8xtRJZ336YeCDck6XLLzljBdymO0eObjgdMIzShdk8Sua0nH7y09YRYxggaLGwK2XMd61K5EKbEM+cUV8+ijcBiT11yrokVi0Tn7Je6nEBTQ2csjYgJeWu3JTdH1dRpGI31sOFEaSvuAmIGVhMq4d0oJhJ5vwpQ34vIKFB15OG6shYrKh2moYD/BS+wdiClgVyFWRM1dXErwIjxi/NUuNybt0Pg3DDuhmVadEPBaB5kRytkR7uttqd994yakcCuBjEYiDBjLS+28jjRsBxXYCwdx8ynXBaMzDgkUmIQ0Oaw2k1HduYDzuDZmB4tdOCVoHVCqROROYM0fscMIvvy5CQ4CHIfpCmiyEgKp1zAZI4cgsPoV2URLmflA67h9YY0F/EN3Lgk8QE8mHPwUrdklUWPvNde36wSVdZHWVtTfb4/QOpWMqoay55AjcHjyCvanjkGFoGYTTS4PggKlT0ZPruK03Z4okZv4cQv5XeuYKyQ5/V0R41OI0M6kBxsCVpdgdQNmOzH53mPl9eP4Jl1gJuA+fUBC1pUpSkCwu+gz8IhP3IncayYTHXzq+5JU56vcB6pDTTaWUPjNpSuCVshPj0/w0oGrMCMUpAyrYOsRP23RJGAxTgZvvjO7c4JRjA0TfqnOO8XxNFBVicmKaSLzIlz1UPWizSvY=
+  app: gesco-chat
+  on:
+    repo: Gescosolution/GescoChat
