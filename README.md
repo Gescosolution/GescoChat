@@ -156,6 +156,8 @@ Para descargar en un contenedor la imagen creada, se ejecuta la orden `$ docker 
 Una vez hecho el pull, se dispondrá de la imagen funcionando en el contenedor correctamente. Esto ha sido posible gracias al 
 [**Dockerfile**](https://github.com/Gescosolution/GescoChat/blob/master/Dockerfile) de la aplicación.
 
+![pulled](https://dl.dropboxusercontent.com/s/dxumakzwi8z21w9/Captura%20de%20pantalla%202016-02-01%2000.28.13.png)
+
 
 
 
