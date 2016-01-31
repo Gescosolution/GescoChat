@@ -1,4 +1,4 @@
-#OS 
+#OS
 FROM ubuntu:latest
 
 #Autor/Author
@@ -11,8 +11,6 @@ RUN sudo apt-get -y update
 RUN sudo apt-get install -y git
 RUN git clone https://github.com/Gescosolution/GescoChat.git
 
-#Habilitar paquetes extra para Ubuntu/Enable Extra Packages for Enterprise Linux (EPEL) for Ubuntu
-RUN     sudo apt-get install -y epel-release
 # Install Node.js and npm
 RUN     sudo apt-get  install -y nodejs npm
 
