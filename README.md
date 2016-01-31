@@ -137,7 +137,24 @@ y mas tarde **Heroku** la ha desplegado.
 
 ### Docker
 
+Para crear el entorno de pruebas se usa **Docker** y en concreto un Dockerfile donde se describe tanto el sistema operativo que 
+tendrá el contenedor como las herramientas que se van a instalar.
 
+El primer paso es crearse una cuenta en Docker y a continuación sincronizarla con una cuenta de **GitHub**.
+
+![dockerGit](https://dl.dropboxusercontent.com/s/u5w29xwtypd7cbm/Captura%20de%20pantalla%202016-01-31%2023.44.15.png)
+
+A partir de entonces, cada vez que se haga un push al repositorio de GitHub, se actualizará el repositorio de Docker.
+Para comprobar que se ha construido bien la imagen, se puede ver un log de éstas. En la siguiente imagen se puede apreciar.
+
+![logDocker](https://dl.dropboxusercontent.com/s/yue2zrf69o0d3u0/Captura%20de%20pantalla%202016-01-31%2023.46.39.png)
+
+[**Repositorio Docker**](https://hub.docker.com/r/flbkernel/gescochat/)
+
+Para descargar en un contenedor la imagen creada, se ejecuta la orden `$ docker pull flbkernel/gescochat`.
+
+Una vez hecho el pull, se dispondrá de la imagen funcionando en el contenedor correctamente. Esto ha sido posible gracias al 
+[**Dockerfile**](https://github.com/Gescosolution/GescoChat/blob/master/Dockerfile) de la aplicación.
 
 
 
